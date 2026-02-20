@@ -8,31 +8,28 @@
     <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
 
     <script>
-        var tuseday
-        var bWeek
 
         $.getJSON('https://isitpatchtuseday.com/api/v1/patchtuseday')
             .done(function(response) {
-                if ($(response.isPatchTuseday) === true) {
-                    tuseday = "YES"
-                } else {
-                    tuseday = "NO"
-                }
+              if ($(response.isPatchTuseday) === true) {
+                  document.getElementById("pTuseday").innerHTML =  <p>Patch Tuseday: YES</p>
+              } else {
+                  document.getElementById("pTuseday").innerHTML =  <p>Patch Tuseday: NO</p>
+              }
 
-                if ($(response.isBWeek) === true) {
-                    bWeek = "YES"
-                } else {
-                    bWeek = "NO"
-                }
+              if ($(response.isBWeek) === true) {
+                  document.getElementById("bWeek").innerHTML =  <p>B week: YES</p>
+              } else {
+                  document.getElementById("bWeek").innerHTML =  <p>B week: NO</p>
+              }
             })
             .fail(function(jqXHR, textStatus, error) {
-                console.log("Error!" + error)
-                tuseday = error
-                bWeek = error
+              console.log("Error calling API!" + error)
+              document.getElementById("pTuseday").innerHTML =  <p>Patch Tuseday: Error calling API!</p>
+              document.getElementById("bWeek").innerHTML =  <p>B week: Error calling API!</p>
+
+
             })
-
-        
-
 
     </script>
 
@@ -56,8 +53,8 @@ body {
         </div>
       </div>
       <div class="window-body">
-        <p>Patch Tuseday: <script type="text/javascript">document.write(tuseday)</script></p>
-        <p>B week: <script type="text/javascript">document.write(bWeek)</script></p>
+        <p id="pTuseday">Patch Tuseday: Loading...</p>
+        <p id="bWeek">B week: Loading...</p>
         <section class="field-row" style="justify-content: flex-end">
           <button>OK</button>
         </section>
