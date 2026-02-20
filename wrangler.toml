@@ -1,10 +1,11 @@
 name = "patch-tuseday-website"
-assets = {
-  directory = "public"
-}
+
 compatibility_date = "2026-02-19"
 
 workers_dev = false
+
+[assets]
+directory = "./public"
 
 [observability]
 enabled = false
